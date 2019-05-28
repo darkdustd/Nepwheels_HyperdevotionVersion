@@ -1,0 +1,122 @@
+<div  id="modalVehiculo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ !this.dataApi.selectedVehiculo.id ? 'Nuevo Vehiculo' : 'Actualizar Vehiculo '}}
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <form name="vehiculoForm" #formVehiculo="ngForm" (ngSubmit)= "onSaveVehiculo(formVehiculo)">
+          <!--
+          <input type="text" name="vehiculoId" >
+          -->
+          <input type="hidden" name="id" [(ngModel)]="this.dataApi.selectedVehiculo.id">
+
+          <div class="form-group">
+
+            <label for="tipo" class="col-form-label">Tipo de vehiculo</label>
+            <select [(ngModel)]="this.dataApi.selectedVehiculo.tipo" type="text" class="form-control" name="tipo">
+             <option value="Automovil">Automovil</option>
+             <option value="Monopatin">Monopatin</option>
+             <option value="Bicicleta">Bicicleta</option>
+             <option value="Motocicleta">Motocicleta</option>
+             <option value="Hoverboard">Hoverboard</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="marca" class="col-form-label">Marca</label>
+            <input type="text" class="form-control" name="marca" [(ngModel)]="this.dataApi.selectedVehiculo.marca">
+          </div>
+
+          <div class="form-row">
+
+            <div class="form-group col-md-6">
+              <label for="identificador" class="col-form-label">Identificador (chasis,marco,etc)</label>
+              <input type="text" class="form-control" name="identificador" [(ngModel)]="this.dataApi.selectedVehiculo.identificador">
+            </div>
+
+            <div class="from-group col-md-6">
+              <label for="accesorio" class="col-form-label">Accesorio</label>
+              <input type="text" class="form-control" name="accesorio" [(ngModel)]="this.dataApi.selectedVehiculo.accesorio">
+            </div>
+
+          </div>
+
+          <div class="form-row">
+
+            <div class="form-group col-md-6">
+              <label for="preciohora" class="col-form-label">Precio / hora</label>
+              <input type="text" class="form-control" name="preciohora" placeholder="0,00$" [(ngModel)]="this.dataApi.selectedVehiculo.preciohora">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="creacion" class="col-form-label">Fecha de creación</label>
+              <input type="text" class="form-control" name="creacion" placeholder="DD/MM/AA" [(ngModel)]="this.dataApi.selectedVehiculo.creacion">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="imagen" class="col-form-label">Imagen (URL)</label>
+            <input type="text" class="form-control" name="imagen" [(ngModel)]="this.dataApi.selectedVehiculo.imagen">
+          </div>
+
+          <div class="form-row">
+
+            <div class="form-group col-md-6">
+              <label for="latitud" class="col-form-label">latitud</label>
+              <input type="text" class="form-control" name="latitud" [(ngModel)]="this.dataApi.selectedVehiculo.latitud">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="longitud" class="col-form-label">longitud</label>
+              <input type="text" class="form-control" name="longitud" [(ngModel)]="this.dataApi.selectedVehiculo.longitud">
+            </div>
+
+          </div>
+
+          <div class="form-row">
+
+            <div class="form-group col-md-4">
+              <label for="estado" class="col-form-label">estado</label>
+              <select type="text" class="form-control" name="estado" [(ngModel)]="this.dataApi.selectedVehiculo.estado">
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="kilometros" class="col-form-label">kilometros</label>
+              <input type="text" class="form-control" name="kilometros" [(ngModel)]="this.dataApi.selectedVehiculo.kilometraje">
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="rentado" class="col-form-label">rentado</label>
+              <select type="text" class="form-control" name="rentado" [(ngModel)]="this.dataApi.selectedVehiculo.rentado">
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" #btnClose>Cancelar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+
+        </form>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>

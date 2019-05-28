@@ -1,0 +1,55 @@
+
+<div class="container">
+
+<br>
+<br>
+<div class="card text-center">
+  <div class="card-header">
+    <p class="text-center">Ubicacion parqueadero</p>
+  </div>
+  <div class="card-body">
+
+    <agm-map
+      [latitude]="lat"
+      [longitude]="lng"
+      [zoom]="zoom"
+      [disableDefaultUI]="false"
+      [zoomControl]="false">
+
+      <agm-marker
+          *ngFor="let m of markers; let i = index"
+          (markerClick)="clickedMarker(m.label, i)"
+          [latitude]="m.lat"
+          [longitude]="m.lng"
+          [label]="m.label"
+          [markerDraggable]="m.draggable"
+          (dragEnd)="markerDragEnd(m, $event)">
+
+        <agm-info-window>
+          <p class="text-center font-weight-bold">{{puntoAsociado.nombre}}</p>
+          <p class="text-center">{{puntoAsociado.direccion}}</p>
+        </agm-info-window>
+
+      </agm-marker>
+
+      <agm-circle [latitude]="lat + 0.3" [longitude]="lng"
+          [radius]="5000"
+          [fillColor]="'red'"
+          [circleDraggable]="true"
+          [editable]="true">
+      </agm-circle>
+
+    </agm-map>
+
+  </div>
+  <div class="card-footer text-muted">
+
+    <div class="my-2 text-center">
+      <a href="/Admin/PuntosAsociados" class="button">
+        <button type="button" name="Atras"  class="btn btn-danger btn-sm"  >Atras</button>
+      </a>
+    </div>
+
+  </div>
+</div>
+</div>

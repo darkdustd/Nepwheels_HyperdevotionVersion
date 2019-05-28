@@ -1,0 +1,28 @@
+
+<section class="mt-5 mx-auto" style="max-width: 1050px;"  >
+    <div class="card mb-6 bg-dark text-white" style="max-width: 1050px;" align-content="center">
+      <div class="row no-gutters">
+        <div class="col-md-6">
+          <img src="{{vehiculo.imagen}}" class="card-img"  style="max-width: 500px">
+        </div>
+        <div class="col-md-6">
+          <div class="card-body">
+            <h5 class="card-title">{{vehiculo.tipo}} {{vehiculo.marca}}</h5>
+
+            <p class="card-text">identificador: {{vehiculo.identificador}}</p>
+            <p class="card-text">Accesorio: {{vehiculo.accesorio}}</p>
+            <p class="card-text">Precio/hora: {{vehiculo.preciohora}}</p>
+            <p class="card-text">Fecha de agregación: {{vehiculo.creacion}}</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="my-2 text-center">
+      <a href="Admin/Vehiculos" class="button">
+        <button type="button" name="Atras"  class="btn btn-danger btn-sm"  >Atras</button>
+      </a>
+    </div>
+
+  </section>

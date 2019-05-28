@@ -1,0 +1,51 @@
+<div class="container">
+
+
+<div class="card">
+  <div class="card-body text-primary">
+    <h5 class="card-title">
+      <p class="text-center">Listado de vehiculos para mantenimiento</p>
+    </h5>
+
+
+
+<br>
+<div *ngIf="vehiculos?.length == 0" class="alert alert-info" >
+  No hay registros en la base de datos
+</div>
+<table class="table table-bordered table-striped " width="800" *ngIf="vehiculos?.length>0" >
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Marca</th>
+      <th>Kms recorridos</th>
+      <th>Estado</th>
+      <th>Rentado</th>
+      <th>Mantenimiento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let vehiculo of vehiculos">
+      <td>{{vehiculo.tipo}}</td>
+      <td>{{vehiculo.marca}}</td>
+      <td>{{vehiculo.kilometros}}</td>
+      <td>{{vehiculo.estado}}</td>
+      <td>{{vehiculo.rentado}}</td>
+      <td>
+        <button type="button" name="Accesorio" id="mantenimiento" class="btn btn-link" (click)="onMantenimientoVehiculo(vehiculo)">
+          <img src="https://image.flaticon.com/icons/svg/1086/1086581.svg">
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="my-2 text-center">
+  <a href="/Admin" class="button">
+    <button type="button" name="Atras"  class="btn btn-danger btn-sm"  >Atras</button>
+  </a>
+</div>
+
+  </div>
+</div>
+</div>

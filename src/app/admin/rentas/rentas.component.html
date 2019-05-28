@@ -1,0 +1,26 @@
+
+
+<div class="card">
+  <div class="card-body">
+    <h3 class="text-center">Historial de rentas</h3>
+
+    <table class ="table table-hover">
+      <thead>
+        <tr>
+          <th scope ="col">Nombre</th>
+          <th scope ="col">Vehiculo</th>
+          <th scope ="col">Accesorio</th>
+        </tr>
+      </thead>
+
+<tbody>
+  <tr *ngFor="let rent of rents; index as i">
+    <td>{{rent.nombre}}</td>
+    <td>{{rent.vehicle}}</td>
+    <td>{{rent.accesories}}</td>
+
+  </tr>
+</tbody>
+    </table>
+  </div>
+</div>

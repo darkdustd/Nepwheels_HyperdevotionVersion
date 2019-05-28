@@ -1,0 +1,154 @@
+<div class="container mt-5">
+<h2>Formulario de pago</h2>
+  <br>
+  <form class="was-validated">
+<form (ngSubmit)="contactForm(form.value)" #form="ngForm">
+
+
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationDefault01">Nombre</label>
+    <input type="text" class="form-control" name="nombre" ngModel id="validationDefault01" value="Neptune" placeholder="Neptune" required>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="validationDefault02">Apellido</label>
+    <input type="text" class="form-control" name="asunto" ngModel id="validationDefault02" value="Pudding" placeholder="Pudding" >
+    </div>
+  </div>
+
+
+
+
+  <div class="form-group">
+    <label for="validationDefault05">Email</label>
+    <input type="email" class="form-control" name="email" ngModel id="validationDefault05" value="darkdustd@hotmail.com" >
+  </div>
+
+
+
+
+  <div class="form-row">
+    <div class="col-md-12 mb-3">
+      <label for="validationDefault03">Direccion</label>
+      <input type="text" class="form-control" id="validationDefault03" placeholder="Tu Dirección" required>
+    </div>
+  </div>
+
+
+  <div class="form-row">
+    <div class="col-md-12 mb-3">
+      <label for="validationDefault04">Direccion 2 <span class="text-muted">(Opcional)</span></label>
+      <input type="text" class="form-control" id="validationDefault04" placeholder="Tu Dirección" >
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <div class="form-row">
+    <div class="col-md-12 mb-3">
+      <label for="validationDefault05">Método de pago</label>
+      <div class="form-group">
+        <select class="custom-select" required>
+          <option value="">-</option>
+          <option value="1">Tarjeta de credito</option>
+          <option value="2">Tarjeta de debito</option>
+          <option value="3">Tarjeta de cliente frecuente</option>
+        </select>
+        <div class="invalid-feedback">Debes seleccionar un metodo de pago</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault08">Nombre en la tarjeta</label>
+      <input type="text" class="form-control" id="validationDefault08" placeholder="Nombre" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault06">Numero de la tarjeta</label>
+      <input type="text" class="form-control" id="validationDefault06" placeholder="Numero de la tarjeta"  required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault07">Expiración</label>
+      <input type="text" class="form-control" id="validationDefault07" placeholder="Expiración"  required>
+    </div>
+  </div>
+
+
+  <br>
+  <div class="custom-control custom-checkbox mb-3">
+    <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
+    <label class="custom-control-label" for="customControlValidation1">Acepto los términos y condiciones</label>
+    <div class="invalid-feedback">Debes aceptar los términos y condiciones</div>
+  </div>
+
+
+
+
+  <div class="form-row">
+    <div class="col-md-1 mb-3">
+      <button type ="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Cancelar</button>
+    </div>
+    <div class="col-md-1 mb-3">
+      <button type="submit"  class="btn btn-primary">
+        Rentar
+      </button>
+    </div>
+  </div>
+
+
+
+
+</form>
+  </form>
+
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Está seguro que desea cancelar la renta?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Haga clic en "Cancelar" para cancelar la renta del vehículo
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+          <a href="./Home" class="btn btn-danger" role="button">Cancelar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>

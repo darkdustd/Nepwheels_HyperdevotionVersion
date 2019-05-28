@@ -1,0 +1,51 @@
+<div class="card">
+  <div class="card-body text-primary">
+    <h5 class="card-title">
+      <p class="text-center">Listado de ubicaciones</p>
+    </h5>
+
+<div class="my-2 text-center">
+  <button class="btn btn-rounded btn-primary" type="button" data-toggle="modal" data-target="#modalPunto">
+    Crear Ubicacion
+  </button>
+</div>
+
+<br>
+<div *ngIf="puntosAsociados?.length == 0" class="alert alert-info" >
+  No hay registros en la base de datos
+</div>
+<table class="table table-bordered table-striped" *ngIf="puntosAsociados?.length>0" >
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Direccion</th>
+      <th>Ver</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let puntoAsociado of puntosAsociados">
+      <td>{{puntoAsociado.nombre}}</td>
+      <td>{{puntoAsociado.direccion}}</td>
+      <td>
+        <button type="button" name="Accesorio" routerLink="{{puntoAsociado.id}}" class="btn btn-link ">
+          <img src="https://image.flaticon.com/icons/png/512/65/65000.png">
+        </button>
+      </td>
+      <td>
+        <button type="button" name="Editar" class="btn btn-primary" data-toggle="modal" data-target="#modalPunto" (click)="onPreUpdatePuntoAsociado(puntoAsociado)">Editar</button>
+      </td>
+      <td>
+        <button type="button" name="Eliminar"  class="btn btn-danger btn-sm" (click)="onDeletePuntoAsociado(puntoAsociado.id)" >Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="my-2 text-center">
+  <a href="/Admin" class="button">
+    <button type="button" name="Atras"  class="btn btn-danger btn-sm"  >Atras</button>
+  </a>
+</div>
+<app-modal-puntos></app-modal-puntos>

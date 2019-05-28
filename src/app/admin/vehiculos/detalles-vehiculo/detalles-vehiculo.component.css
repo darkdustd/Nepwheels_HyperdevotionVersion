@@ -1,0 +1,13 @@
+p.card-text{
+  text-align: justify;
+}
+
+p.card-image{
+  width: 100%;
+  max-width: 500px;
+}
+
+img{
+  width: 100%;
+  max-width: 500px;
+}
