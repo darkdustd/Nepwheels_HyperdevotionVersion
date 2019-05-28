@@ -11,34 +11,64 @@ import Swal from 'sweetalert2';
 })
 export class GoogleMapComponent implements OnInit {
 
-  lat: number;
-    lng: number;
+
+  // google maps zoom level
+  zoom: number = 15;
+  // initial center position for the map
+  lat: number = 7.116046;
+  lng: number = -73.105552;
+
 
   constructor(private dataApi: DataApiService) { }
   public puntosAsociados = [];
   public puntoAsociado = '';
 
-  ngOnInit() {
-      this.getUserLocation();
-      this.getListPuntosAsociados();
 
+  ngOnInit() {
+      this.getListPuntosAsociados();
     }
 
 
     getListPuntosAsociados(){
-      this.dataApi.getAllPuntosAsociados().subscribe(puntoAsociado => {console.log('VEHICULOS',puntoAsociado);
-      this.puntosAsociados = puntoAsociado;
+      this.dataApi.getAllPuntosAsociados().subscribe(puntosAsociados => {console.log('VEHICULOS',puntosAsociados);
+      this.puntosAsociados = puntosAsociados;
+
+      for (let i of puntosAsociados) {
+
+        this.markers.push({
+          lat: i.latitud,
+          lng: i.longitud,
+          draggable: false,
+          label: 'A'
+        });
+      }
     });
     }
 
-    private getUserLocation() {
-     /// locate the user
-     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-         this.lat = position.coords.latitude;
-         this.lng = position.coords.longitude;
+    clickedMarker(label: string, index: number) {
+      console.log(`clicked the marker: ${label || index}`);
+      //this.moverMarker(index, 0);
+    }
 
-       });
-     }
-   }
- }
+    mapClicked($event: MouseEvent) {
+      this.markers.push({
+        lat: $event.coords.lat,
+        lng: $event.coords.lng,
+        draggable: false
+      });
+    }
+
+    markerDragEnd(m: marker, $event: MouseEvent) {
+      console.log('dragEnd', m, $event);
+    }
+
+    markers: marker[] = []
+  }
+
+  // just an interface for type safety.
+  interface marker {
+  	lat: number;
+  	lng: number;
+  	label?: string;
+  	draggable: boolean;
+  }

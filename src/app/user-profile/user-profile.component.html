@@ -5,12 +5,56 @@
 
 <!-- User NOT logged in -->
 <ng-template #guest>
-    <h3>Howdy, GUEST</h3>
-    <p>Login to get started...</p>
+  <br>
 
-    <button (click)="auth.googleLogin()">
-        <i class="fa fa-google"></i> Connect Google
-    </button>
+
+
+  <section id="login" class="mb-5 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+          <div class="card_login">
+            <div class="card">
+              <div class="card-body text-center">
+                <form #formLogin="ngForm" (submit)="onLogin()">
+                  <h1 class="h3 mb-3 font-weight-normal" *ngIf="!isError">Login</h1>
+                  <div class="alert alert-danger" role="alert" *ngIf="isError">
+                    Something is wrong!
+                  </div>
+                  <div class="form-group">
+                    <input [(ngModel)]="email"
+                    type="email" id="email" name="email" class="form-control" placeholder="Email"  required>
+                  </div>
+                  <div class="form-group">
+                    <input  [(ngModel)]="password"
+                    type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                  </div>
+                  <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
+                  <div class="form-group">
+                    <a href="../Signin" class="form-control login-user">Are you new ?</a>
+                  </div>
+
+
+
+
+                </form>
+
+                <div class="form-group">
+                  <button class = "btn btn-block btn-social btn-google" (click)="auth.googleLogin()">
+                    <span class = "fa fa-google"> </span>
+                Google
+                    </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
 
 </ng-template>
 
@@ -25,7 +69,7 @@
         <p>Favorite Color: {{ user.ucode }} </p>
 
         <button (click)="auth.signOut()">Logout</button>
-
+        <div *ngIf="user.ucode==0">Content to render when condition is true.</div>
 
     </div>
 

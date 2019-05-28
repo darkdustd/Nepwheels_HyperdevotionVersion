@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService} from '../services/auth.service';
 import {AngularFireAuth} from '@angular/fire/auth';
+import { AuthService2 } from '../core/auth.service';
 
 @Component({
   selector: 'app-naviation',
@@ -9,7 +10,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 })
 export class NaviationComponent implements OnInit {
 
-  constructor(private authService: AuthService, private afsAuth: AngularFireAuth) { }
+  constructor(private authService: AuthService, private afsAuth: AngularFireAuth, public auth: AuthService2) { }
   public isLogged: boolean = false;
 
   ngOnInit() {

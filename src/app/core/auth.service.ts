@@ -18,13 +18,13 @@ interface User {
 
 
 @Injectable({ providedIn: 'root' })
-export class AuthService {
+export class AuthService2 {
 
   user: Observable<User>;
 
   constructor(
     private afAuth: AngularFireAuth,
-    private afs: AngularFirestore,
+    private af: AngularFirestore,
     private router: Router
   ) {
 
@@ -32,7 +32,7 @@ export class AuthService {
       this.user = this.afAuth.authState.pipe(
         switchMap(user => {
           if (user) {
-            return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
+            return this.af.doc<User>(`users/${user.uid}`).valueChanges()
           } else {
             return of(null)
           }
@@ -42,6 +42,7 @@ export class AuthService {
 
   googleLogin() {
     const provider = new auth.GoogleAuthProvider()
+    this.router.navigate(['Home']);
     return this.oAuthLogin(provider);
   }
 
@@ -56,14 +57,14 @@ export class AuthService {
   private updateUserData(user) {
     // Sets user data to firestore on login
 
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userRef: AngularFirestoreDocument<any> = this.af.doc(`users/${user.uid}`);
 
     const data: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      ucode: '0'
+
     }
 
     return userRef.set(data, { merge: true })
@@ -73,7 +74,27 @@ export class AuthService {
 
   signOut() {
     this.afAuth.auth.signOut().then(() => {
-        this.router.navigate(['/']);
+        this.router.navigate(['Home']);
     });
   }
+
+  registerUser(email: string, pass: string){
+    return new Promise ((resolve, reject) =>{
+      this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
+      .then(userData=> resolve(userData),
+      err => reject(err));
+    })
+  }
+
+  loginEmailUser(email: string, pass: string){
+    return new Promise((resolve, reject) => {
+this.afAuth.auth.signInWithEmailAndPassword(email, pass)
+.then(userData => resolve(userData),
+  err => reject(err));
+});
+}
+
+
+
+
 }

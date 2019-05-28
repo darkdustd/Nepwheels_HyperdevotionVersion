@@ -39,8 +39,9 @@ import { ModalPuntosComponent } from './admin/modal-puntos/modal-puntos.componen
 export const firebaseConfig = environment.firebaseConfig;
 import { CoreModule } from './core/core.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { RentasComponent } from './admin/rentas/rentas.component';
-import { PagosComponent } from './admin/pagos/pagos.component';
+import { RentasComponent } from './admin2/rentas/rentas.component';
+import { PagosComponent } from './admin2/pagos/pagos.component';
+import { Admin2Component } from './admin2/admin2.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { PagosComponent } from './admin/pagos/pagos.component';
     ModalPuntosComponent,
     UserProfileComponent,
     RentasComponent,
-    PagosComponent
+    PagosComponent,
+    Admin2Component
   ],
   imports: [
     BrowserModule,

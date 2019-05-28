@@ -18,14 +18,16 @@ import { DetallesPuntosComponent } from './admin/puntos-asociados/detalles-punto
 import { ModalComponent } from './admin/modal/modal.component';
 import { MantenimientoComponent } from './admin/mantenimiento/mantenimiento.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
-import { RentasComponent } from './admin/rentas/rentas.component';
-import { PagosComponent } from './admin/pagos/pagos.component';
+import { RentasComponent } from './admin2/rentas/rentas.component';
+import { PagosComponent } from './admin2/pagos/pagos.component';
+import {Admin2Component} from './admin2/admin2.component';
 
 const routes: Routes = [
 
   {path: '', component: HomeComponent},
   {path: 'Home', component: HomeComponent},
   {path: 'Login', component: LoginComponent},
+  {path: 'Signin', component: SigninComponent},
   {path: 'Rent', component: RentComponent},
   {path: 'Reserve', component: ReserveComponent},
   {path: 'Map', component: MapComponent},
@@ -38,8 +40,9 @@ const routes: Routes = [
   {path: 'Admin/PuntosAsociados', component: PuntosAsociadosComponent},
   {path: 'Admin/PuntosAsociados/:id', component: DetallesPuntosComponent},
   {path: 'Admin/Mantenimiento', component: MantenimientoComponent},
-  {path: 'Admin/Rentas', component: RentasComponent},
-  {path: 'Admin/Pagos', component: PagosComponent},
+  {path: 'Admin2/Rentas', component: RentasComponent},
+  {path: 'Admin2/Pagos', component: PagosComponent},
+  {path: 'Admin2', component: Admin2Component},
   {path: 'User', component: UserProfileComponent},
   {path: '**', component: NerrpComponent}
 ];
