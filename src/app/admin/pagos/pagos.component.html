@@ -1,0 +1,30 @@
+
+
+<div class="card">
+  <div class="card-body">
+    <h3 class="text-center">Historial de pagos</h3>
+
+    <table class ="table table-hover">
+      <thead>
+        <tr>
+          <th scope ="col">Valor</th>
+          <th scope ="col">Metodo</th>
+          <th scope ="col">#tarjeta</th>
+          <th scope ="col">NombreTarjeta</th>
+          <th scope ="col">Expiracion</th>
+        </tr>
+      </thead>
+
+<tbody>
+  <tr *ngFor="let pay of pays; index as i">
+    <td>{{pay.pago}}</td>
+    <td>{{pay.metodo}}</td>
+    <td>{{pay.cardnum}}</td>
+    <td>{{pay.cardname}}</td>
+    <td>{{pay.cardex}}</td>
+
+  </tr>
+</tbody>
+    </table>
+  </div>
+</div>

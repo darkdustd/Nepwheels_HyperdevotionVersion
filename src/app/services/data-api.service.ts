@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Vehiculos } from '../models/vehiculos';
 import {RentInterface } from '../models/rent';
+import {PayInterface} from '../models/pay';
 import { PuntosAsociados } from '../models/puntos-asociados';
 import { Observable } from 'rxjs/internal/Observable';
 import Swal from 'sweetalert2';
@@ -15,6 +16,8 @@ export class DataApiService {
   constructor(private afs: AngularFirestore) {
     this.rentsCollections = afs.collection<RentInterface>('rents');
   this.rents = this.rentsCollections.valueChanges();
+  this.paysCollections = afs.collection<PayInterface>('pays');
+this.pays = this.paysCollections.valueChanges();
 }
 
   private puntosAsociadosCollection: AngularFirestoreCollection<PuntosAsociados>;
@@ -34,6 +37,12 @@ export class DataApiService {
   private rents: Observable<RentInterface[]>;
   private rent: Observable<RentInterface>;
   public selectedRent: RentInterface={};
+
+
+  private paysCollections: AngularFirestoreCollection<PayInterface>;
+  private pays: Observable<PayInterface[]>;
+  private pay: Observable<PayInterface>;
+  public selectedPay: PayInterface={};
 
   getAllPuntosAsociados() {
     this.puntosAsociadosCollection = this.afs.collection<PuntosAsociados>('puntosAsociados');
@@ -128,6 +137,22 @@ export class DataApiService {
 
   addRent(rent: RentInterface): void{
     this.rentsCollections.add(rent);
+  }
+
+
+  getAllPays(){
+    return this.pays =this.paysCollections.snapshotChanges()
+    .pipe(map(changes=>{
+      return changes.map(action=>{
+        const data =action.payload.doc.data() as PayInterface;
+        data.id =action.payload.doc.id;
+        return data;
+      })
+    }))
+  }
+
+  addPay(pay: PayInterface): void{
+    this.paysCollections.add(pay);
   }
 
   updateVehiculo(vehiculo: Vehiculos): void {

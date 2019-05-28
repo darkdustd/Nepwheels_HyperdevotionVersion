@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MouseEvent } from '@agm/core';
+import { DataApiService } from '../services/data-api.service';
+import { PuntosAsociados } from '../models/puntos-asociados';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-google-map',
@@ -10,11 +14,21 @@ export class GoogleMapComponent implements OnInit {
   lat: number;
     lng: number;
 
-  constructor() { }
+  constructor(private dataApi: DataApiService) { }
+  public puntosAsociados = [];
+  public puntoAsociado = '';
 
   ngOnInit() {
-      this.getUserLocation()
+      this.getUserLocation();
+      this.getListPuntosAsociados();
 
+    }
+
+
+    getListPuntosAsociados(){
+      this.dataApi.getAllPuntosAsociados().subscribe(puntoAsociado => {console.log('VEHICULOS',puntoAsociado);
+      this.puntosAsociados = puntoAsociado;
+    });
     }
 
     private getUserLocation() {
@@ -27,4 +41,4 @@ export class GoogleMapComponent implements OnInit {
        });
      }
    }
- } 
+ }

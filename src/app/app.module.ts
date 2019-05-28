@@ -40,6 +40,7 @@ export const firebaseConfig = environment.firebaseConfig;
 import { CoreModule } from './core/core.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RentasComponent } from './admin/rentas/rentas.component';
+import { PagosComponent } from './admin/pagos/pagos.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { RentasComponent } from './admin/rentas/rentas.component';
     SigninComponent,
     ModalPuntosComponent,
     UserProfileComponent,
-    RentasComponent
+    RentasComponent,
+    PagosComponent
   ],
   imports: [
     BrowserModule,

@@ -19,6 +19,7 @@ import { ModalComponent } from './admin/modal/modal.component';
 import { MantenimientoComponent } from './admin/mantenimiento/mantenimiento.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 import { RentasComponent } from './admin/rentas/rentas.component';
+import { PagosComponent } from './admin/pagos/pagos.component';
 
 const routes: Routes = [
 
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path: 'Admin/PuntosAsociados/:id', component: DetallesPuntosComponent},
   {path: 'Admin/Mantenimiento', component: MantenimientoComponent},
   {path: 'Admin/Rentas', component: RentasComponent},
+  {path: 'Admin/Pagos', component: PagosComponent},
   {path: 'User', component: UserProfileComponent},
   {path: '**', component: NerrpComponent}
 ];

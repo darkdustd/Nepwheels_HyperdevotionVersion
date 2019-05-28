@@ -2,13 +2,13 @@
 <h2>Formulario de pago</h2>
   <br>
   <form class="was-validated">
-<form (ngSubmit)="contactForm(form.value)" #form="ngForm">
+<form (ngSubmit)="contactForm(form.value)" #formRent ="ngForm" (ngSubmit)="onSaveRent(formRent)"  #formPay ="ngForm" (ngSubmit)="onSavePay(formPay)" #form="ngForm">
 
 
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationDefault01">Nombre</label>
-    <input type="text" class="form-control" name="nombre" ngModel id="validationDefault01" value="Neptune" placeholder="Neptune" required>
+    <input type="text" class="form-control" name="nombre" ngModel id="validationDefault01" value="Neptune" placeholder="Neptune" [(ngModel)]="this.dataApi.selectedRent.nombre" required>
     </div>
 
     <div class="col-md-6 mb-3">
@@ -31,19 +31,28 @@
   <div class="form-row">
     <div class="col-md-12 mb-3">
       <label for="validationDefault03">Direccion</label>
-      <input type="text" class="form-control" id="validationDefault03" placeholder="Tu Dirección" required>
+      <input type="text" class="form-control" name="vehicle" id="validationDefault03" placeholder="Tu Dirección" [(ngModel)]="this.dataApi.selectedRent.vehicle" required>
     </div>
   </div>
 
 
   <div class="form-row">
     <div class="col-md-12 mb-3">
-      <label for="validationDefault04">Direccion 2 <span class="text-muted">(Opcional)</span></label>
-      <input type="text" class="form-control" id="validationDefault04" placeholder="Tu Dirección" >
+      <label for="validationDefault04">Direccion</label>
+      <input type="text" class="form-control" name="accesories" id="validationDefault04" placeholder="Tu Dirección" [(ngModel)]="this.dataApi.selectedRent.accesories" required>
     </div>
   </div>
 
 
+
+
+
+  <div class="form-row">
+    <div class="col-md-12 mb-3">
+      <label for="validationDefault04">Valor a pagar</label>
+      <input type="text" class="form-control" name="pago" id="validationDefault04" placeholder="0.00$" [(ngModel)]="this.dataApi.selectedPay.pago" required>
+    </div>
+  </div>
 
 
 
@@ -53,11 +62,11 @@
     <div class="col-md-12 mb-3">
       <label for="validationDefault05">Método de pago</label>
       <div class="form-group">
-        <select class="custom-select" required>
+        <select name="metodo" class="custom-select" [(ngModel)]="this.dataApi.selectedPay.metodo"required>
           <option value="">-</option>
-          <option value="1">Tarjeta de credito</option>
-          <option value="2">Tarjeta de debito</option>
-          <option value="3">Tarjeta de cliente frecuente</option>
+          <option value="Tarjeta de credito">Tarjeta de credito</option>
+          <option value="Tarjeta de debito">Tarjeta de debito</option>
+          <option value="Tarjeta de cliente frecuente">Tarjeta de cliente frecuente</option>
         </select>
         <div class="invalid-feedback">Debes seleccionar un metodo de pago</div>
 
@@ -68,15 +77,15 @@
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault08">Nombre en la tarjeta</label>
-      <input type="text" class="form-control" id="validationDefault08" placeholder="Nombre" required>
+      <input type="text" class="form-control" name="cardname" id="validationDefault08" placeholder="Nombre" [(ngModel)]="this.dataApi.selectedPay.cardname" required>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault06">Numero de la tarjeta</label>
-      <input type="text" class="form-control" id="validationDefault06" placeholder="Numero de la tarjeta"  required>
+      <input type="text" class="form-control" name="cardnum"id="validationDefault06" placeholder="Numero de la tarjeta"  [(ngModel)]="this.dataApi.selectedPay.cardnum"required>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault07">Expiración</label>
-      <input type="text" class="form-control" id="validationDefault07" placeholder="Expiración"  required>
+      <input type="text" class="form-control" name="cardex" id="validationDefault07" placeholder="Expiración"  [(ngModel)]="this.dataApi.selectedPay.cardex" required>
     </div>
   </div>
 
